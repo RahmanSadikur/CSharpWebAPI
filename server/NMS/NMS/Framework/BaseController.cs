@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using NMS.Core.Handlers;
 using NMS.Data;
-
+using NMS.Loc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,10 @@ namespace NMS.Framework
 {
     public class BaseController:ApiController
     {
-       
+        protected T Resove<T>()
+        {
+            return Kernel.Current.Get<T>();
+        }
 
     }
 }

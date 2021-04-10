@@ -1,6 +1,8 @@
-﻿using NMS.Core.Object;
+﻿using Ninject;
+using NMS.Core.Object;
 using NMS.Entities;
 using NMS.Framework;
+using NMS.Loc;
 using NMS.Repo.Testing;
 using NMS.RepoImp.Testing;
 using System;
@@ -17,8 +19,9 @@ namespace NMS.Controllers
         ITestRepo _testRepo;
         public TestController()
         {
-           // _testRepo = DependencyHandler.Get<ITestRepo>();
-            _testRepo = new TestRepo();
+            // _testRepo = DependencyHandler.Get<ITestRepo>();
+            // _testRepo = new TestRepo();
+            _testRepo = Kernel.Current.Get<ITestRepo>();
         }
         [HttpGet]
         public ListResult<Test> Get()
